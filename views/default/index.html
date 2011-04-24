@@ -1,0 +1,55 @@
+{{extend 'layout.html'}}
+
+
+
+
+<ol>
+{{for i,post in enumerate(posts):}}
+{{if i == items_per_page: break}}
+
+<li>
+
+<div class="news_item">
+{{if post.url == 'self':}}
+<span class="news_main">{{=(A(post.title, _href=URL(c='default',f='comments',args=[post.id])))}}</span><br />
+{{else:}}
+<span class="news_main">{{=(A(post.title, _href=post.url))}}</span><br />
+{{pass}}
+
+{{if can_vote(post.id, 'submission', post.author):}}
+<img id="upvote{{=post.id}}" 
+     src="{{=URL(r=request, c='static', f='up.png')}}" 
+     onclick="ajax('{{=URL(f='vote', args=[post.id, 'submission', 'upvote', post.author])}}',
+                   [],
+                   'points{{=post.id}}');
+              $(this).css('visibility', 'hidden');"/>
+   
+{{pass}}
+<span class="news_meta">
+<span id="points{{=post.id}}">{{=post.points}}</span> points by 
+{{if session.authorized:}}
+<a href="{{=URL(r=request, f='show_profile', args=[post.author])}}">{{=db.person(post.author).username}}</a>
+{{else:}}
+{{=db.person(post.author).username}}
+{{pass}}
+ {{=timesince(post.post_time, now)}} ago. | {{=A(str(post.comments)+' comments', _href=URL(f='comments', args=[post.id]))}} 
+</span>
+<br />
+
+</div>
+
+</li>
+{{pass}}
+
+
+</ol>
+
+Page :
+{{if page:}}
+<a href="{{=URL(r=request, args=[page-1])}}"> previous {{=page}},  </a>
+{{pass}}
+{{=page+1}}
+{{if len(posts)>items_per_page:}}
+<a href="{{=URL(r=request, args=[page+1])}}">, {{=page+2}} next</a>
+{{pass}}
+

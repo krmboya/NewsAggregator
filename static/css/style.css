@@ -1,0 +1,58 @@
+body {padding:0;margin:0;font:0.75em sans-serif;line-height:1.5em;background:#555;color:#454545}
+.fleft {float:left}
+.fright {float:right}
+a {color:#0E4D8B;background:inherit; text-decoration:none}
+a.title {color:#B41A1A;background:#FFF}
+p {margin:0;line-height:1.5em}
+
+/* layout */
+.content {margin:10px auto;width:768px;background:#FFF;color:#454545}
+#logo {background:url(../images/logo.png) no-repeat;width:411;height:66px}
+
+/*header*/
+.header {padding:0 10px 0 10px}
+
+/* navigation */
+#nav {float:left;width:100%;margin:0;padding:0;list-style:none;background:#ccc;border-bottom:1px solid #999}
+#nav li {float:left;margin:0;padding:0}
+#nav a {float:left;display:block;padding:6px 30px 6px 5px;text-decoration:none;font-weight:bold;font-size:12px;color:#666}
+#nav #nav1 a {padding-left:20px}
+#nav a.left_items{background:#ccc url(../images/slant.gif) no-repeat top right}
+#nav .iright{float:right}
+#nav a:hover {color:#000}
+
+#lnav {list-style:none}
+#lnav li {padding:5px}
+
+/* left side */
+.left {float:left;width:595px;margin:0 0 10px 0}
+
+/* left and central column */
+.left_side {float:left;width:165px;padding:0 5px 8px 8px}
+.right_side {float:right;width:405px;margin:0 5px 0 0;text-align:justify}
+/*.article {padding:0 5px 0 0;margin-bottom:20px}
+.grey_top {clear:both;width:382px;background:#EDEDED url(images/grey_top.gif) no-repeat;color:#000;height:5px;padding:0;margin:0 0 0 6px}
+.grey {width:362px;margin:0 0 0 6px;padding:10px;background:#EDEDED url(images/grey_bottom.gif) no-repeat bottom left;color:#808080}
+.grey a {color:#C83C3C;background:inherit;font-weight:bold}
+.grey a:hover {color:#000;background:#EDEDED}*/
+.highlight {padding:5px 3px 5px 3px;margin:0 0 3px 0;border-bottom:1px solid #ccc}
+
+/* right side */
+.right {float:right;width:170px;margin:0 0 10px 0}
+
+img {float:left;margin:0 9px 3px 0}
+
+/* footer */
+.footer {clear:both;text-align:center;color:#808080;background:#f0f0f0;padding:10px 0 5px 0;border-top:1px solid #eee}
+.footer p {line-height:2em}
+.footer a {color:#4F4F4F;background:#f0f0f0;border-bottom:1px dotted #808080;text-decoration:none}
+#poweredby.a {text-decoration:none}
+
+/*items*/
+.news_item {padding:5px; margin:5px 2px;  background:rgb(97%, 97%, 97%)}
+.news_main {font-size:15px}
+.news_meta {font-size:90%}
+.comments {list-style:none;}
+.pageinfo {text-align:center}
+
+#lnav a:hover {font-size:150%; text-decoration:none}

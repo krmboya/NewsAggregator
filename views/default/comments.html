@@ -1,0 +1,82 @@
+{{extend 'layout.html'}}
+
+{{def list_comments(id):}}
+{{if not tree.has_key(id): return}}
+{{for c in tree[id]:}}
+<li>
+<div class="news_item">
+{{if can_vote(c.id, 'comment', c.author):}}
+<img id="upvote{{=c.id}}"
+     src="{{=URL(r=request, c='static', f='up.png')}}"
+     onclick="ajax('{{=URL(f='vote', args=[c.id, 'comment', 'upvote', c.author])}}',
+                   [],
+                   'points{{=c.id}}');
+              $(this).css('visibility', 'hidden');" />
+    
+{{pass}}
+
+<span class="news_meta">     
+<span id="points{{=c.id}}">{{=c.points}}</span> points by 
+{{if session.authorized:}}
+<a href="{{=URL(r=request, f='show_profile', args=[c.author])}}">{{=db.person(c.author).username}}</a>
+{{else:}}
+{{=db.person(c.author).username}}
+{{pass}}
+ {{=timesince(c.post_time, now)}} ago
+</span>
+<br />
+
+<span class="news_main">
+{{=c.body}}
+</span>
+
+<br />
+{{if session.authorized:}}
+<em><p onclick="$('#reply_form{{=c.id}}').show();">reply</p></em>
+
+<form class="reply_form"
+      id="reply_form{{=c.id}}"
+      onsubmit="ajax('{{=URL(f='insert_comment', args=[request.args(0), c.id])}}',
+                     ['body{{=c.id}}'],
+                     '');">
+  Body:<br />
+  <textarea name="body{{=c.id}}" ></textarea> <br />
+  <input type="submit" value="submit"/>
+</form>
+{{pass}}
+<ul class="comments">
+{{list_comments(c.id)}}
+</ul>
+
+</div>
+</li>
+{{pass}}
+{{return}}
+
+{{if not news_item.url == 'self':}}
+<h4>{{=(A(news_item.title, _href=news_item.url))}}</h4><br />
+{{else:}}
+<h4>{{=news_item.title}}</h4><br />
+<span class="news_main">{{=news_item.body}}</span><br />
+{{pass}}
+<span class="news_meta">
+{{=news_item.points}} points by {{=db.person(news_item.author).username}} {{=timesince(news_item.post_time, now)}} ago. | {{=news_item.comments}} comments.
+</span>
+
+
+<br />
+
+<br />
+<h5>comments:</h5>
+{{if session.authorized:}}
+{{=form}}
+{{pass}}
+<ul class="comments">
+{{list_comments(0)}}
+</ul>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){$('.reply_form').hide();});
+</script>

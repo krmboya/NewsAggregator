@@ -1,0 +1,8 @@
+{{extend 'layout.html'}}
+<h5>About {{=record.username}}</h5>
+<p>Points: {{=record.points}}</p>
+{{if record.show_email:}}
+<p>Email: {{=record.email}}</p>
+{{pass}}
+<p>Interests: {{=record.interests}}</p>
+

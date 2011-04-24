@@ -1,0 +1,5 @@
+To run the application on web2py:
+1. Download the web2py framework at http://www.web2py.com/examples/default/download
+2. Copy the project into the applications folder inside the web2py root folder
+3. Run web2py (See Tutorial at http://www.web2py.com/book)
+4. Open you web browser and type http://localhost:8000/techclub/default/index (will take you to the site home)

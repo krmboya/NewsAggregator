@@ -1,0 +1,7 @@
+{{extend 'layout.html'}}
+<h3>{{=post_to_show.title}}</h3>
+<p>{{=post_to_show.body}}</p>
+<h3>Comments</h3>
+{{for comment in comments:}}
+<p>{{=comment.body}}</p>
+{{pass}}
